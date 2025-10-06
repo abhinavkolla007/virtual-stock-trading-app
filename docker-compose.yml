@@ -1,0 +1,36 @@
+services:
+  mysqldb:
+    container_name: mysql-db
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rocking abhi07
+      MYSQL_DATABASE: trading_simulator
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql-db
+
+  backend:
+    container_name: springboot
+    build:
+      context: ./backend
+      dockerfile: ../Trading/backed.dockerfile
+    ports:
+      - "2025:8090"
+    depends_on:
+      - mysqldb
+    restart: on-failure
+
+  frontend:
+    container_name: react
+    build:
+      context: ./frontend
+      dockerfile: ../Trading/fronted.dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+# Declare volumes at the bottom
+volumes:
+  mysql-data:
