@@ -20,7 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
     "rapid.api.key=test-api-key-for-ci",
     "twelvedata.api.host=twelve-data1.p.rapidapi.com",
     "alphavantage.api.key=dummy",
-    "news.api.key=dummy"
+    "news.api.key=dummy",
+    "jwt.secret=dummy-secret"
 })
 public class UserServiceTest {
 
