@@ -6,8 +6,8 @@ import com.nikolagrujic.tradingsimulator.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.boot.test.mock.mockito.MockBean; // 1. IMPORT
+import org.springframework.mail.javamail.JavaMailSender;   // 2. IMPORT
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,11 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 public class UserServiceTest {
+
+    // 3. ADD MOCK BEAN
+    // This tells Spring Boot to put a Mockito mock of JavaMailSender
+    // into the Application Context, satisfying the dependency 
+    // for EmailVerificationService.
+    @MockBean
+    private JavaMailSender javaMailSender; 
+    
     @Autowired
     private UserService userService;
-
-    @MockBean
-    private JavaMailSender javaMailSender;
 
     @Autowired
     private UserRepository userRepository;
