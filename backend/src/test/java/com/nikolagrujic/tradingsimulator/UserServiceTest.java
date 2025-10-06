@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.properties")
 @Transactional
 @TestPropertySource(properties = {
     "rapid.api.key=test-api-key-for-ci",
