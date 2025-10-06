@@ -8,12 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean; // 1. IMPORT
 import org.springframework.mail.javamail.JavaMailSender;   // 2. IMPORT
+import org.springframework.test.context.TestPropertySource; // ⬅️ NEW IMPORT
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
+@TestPropertySource(properties = {
+    // 1. Provide the missing API key property with a dummy value
+    "rapid.api.key=test-api-key-for-ci"
+})
 public class UserServiceTest {
 
     // 3. ADD MOCK BEAN
