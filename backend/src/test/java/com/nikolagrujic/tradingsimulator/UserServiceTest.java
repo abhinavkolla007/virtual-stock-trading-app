@@ -2,6 +2,7 @@ package com.nikolagrujic.tradingsimulator;
 
 import com.nikolagrujic.tradingsimulator.model.User;
 import com.nikolagrujic.tradingsimulator.repository.UserRepository;
+import com.nikolagrujic.tradingsimulator.service.StockService;
 import com.nikolagrujic.tradingsimulator.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,8 @@ public class UserServiceTest {
     @MockBean
     private JavaMailSender javaMailSender;
 
-    // Optional: if StockService isn't used in this test
-    // @MockBean
-    // private StockService stockService;
+     @MockBean
+    private StockService stockService;
 
     @Autowired
     private UserService userService;
