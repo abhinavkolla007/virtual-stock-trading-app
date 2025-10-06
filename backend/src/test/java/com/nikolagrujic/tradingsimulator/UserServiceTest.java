@@ -15,21 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@TestPropertySource(locations = "classpath:application-test.properties")
 @Transactional
-@TestPropertySource(properties = {
-    "rapid.api.key=test-api-key-for-ci",
-    "twelvedata.api.host=twelve-data1.p.rapidapi.com",
-    "alphavantage.api.key=dummy",
-    "news.api.key=dummy",
-    "jwt.secret=dummy-secret"
-})
+@TestPropertySource(
+    locations = "classpath:application-test.properties"
+)
 public class UserServiceTest {
 
     @MockBean
     private JavaMailSender javaMailSender;
 
-     @MockBean
+    @MockBean
     private StockService stockService;
 
     @Autowired
@@ -42,6 +37,7 @@ public class UserServiceTest {
     public void testGetUserByEmail() {
         final String EMAIL = "test@test.com";
         final String FIRST_NAME = "First";
+
         User mockUser = new User();
         mockUser.setEmail(EMAIL);
         mockUser.setPassword("password");
@@ -51,6 +47,6 @@ public class UserServiceTest {
 
         User user = userService.findByEmail(EMAIL);
         assertNotNull(user);
-        assertEquals(user.getFirstName(), FIRST_NAME);
+        assertEquals(FIRST_NAME, user.getFirstName());
     }
 }
