@@ -1,0 +1,13 @@
+package com.abhi.virtualstock.exception;
+
+import lombok.Getter;
+
+@Getter
+public class UserAlreadyExistsException extends RuntimeException {
+    private final String userEmail;
+
+    public UserAlreadyExistsException(String message, String userEmail) {
+        super(message);
+        this.userEmail = userEmail;
+    }
+}

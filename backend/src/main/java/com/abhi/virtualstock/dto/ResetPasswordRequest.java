@@ -1,0 +1,32 @@
+package com.abhi.virtualstock.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import com.abhi.virtualstock.constants.Constants;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class ResetPasswordRequest {
+    @NotNull
+    @NotEmpty(message = "The password must not be empty!")
+    @Size(min = Constants.PASSWORD_MIN_LENGTH, message = "The password must consist of at least 8 characters.")
+    private String newPassword;
+
+    @NotNull
+    @NotEmpty(message = "The password must not be empty!")
+    @Size(min = Constants.PASSWORD_MIN_LENGTH, message = "The password must consist of at least 8 characters.")
+    private String newPasswordRepeat;
+
+    @NotNull
+    @NotEmpty(message = "The token must not be empty!")
+    private String token;
+}

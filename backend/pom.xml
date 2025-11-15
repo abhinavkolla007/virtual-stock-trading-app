@@ -12,7 +12,7 @@
         <version>3.3.4</version>
     </parent>
 
-    <groupId>com.nikolagrujic.tradingsimulator</groupId>
+    <groupId>com.abhi.virtualstock</groupId>
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Trading Simulator backend</name>
@@ -145,6 +145,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <configuration>
+                <mainClass>com.abhi.virtualstock.TradingSimulatorBackendApplication</mainClass>
                 <excludes>
                     <exclude>
                         <groupId>org.projectlombok</groupId>
